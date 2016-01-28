@@ -3,7 +3,7 @@ Name: python
 Cartridge-Short-Name: PYTHON
 Display-Name: Only Python
 Description: 'An embedded cartridge that provides only python, nothing else.'
-Version: '3.5.0'
+Version: '2.7.11'
 Versions: ['3.5.0', '2.7.11']
 License: The Python License
 License-Url: http://docs.python.org/3/license.html
