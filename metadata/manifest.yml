@@ -1,10 +1,11 @@
----
 Name: python
 Cartridge-Short-Name: PYTHON
 Display-Name: Only Python
-Description: 'An embedded cartridge that provides only python, nothing else.'
-Version: '3.5.0'
-Versions: ['3.5.0', '2.7.11']
+Description: An embedded cartridge that provides only python, nothing else.
+Version: 3.5.1
+Versions:
+- 3.5.1
+- 2.7.11
 License: The Python License
 License-Url: http://docs.python.org/3/license.html
 Vendor: python.org
@@ -14,7 +15,7 @@ Categories:
 - service
 - python
 - embedded
-Website: https://github.com/praisebetoscience/openshift-cartridge-python-3.5
+Website: https://github.com/Grief/openshift-cartridge-python-3.5
 Help-Topics:
   Developer Center: https://www.openshift.com/developers
 Provides:
@@ -31,17 +32,18 @@ Scaling:
   Min: 1
   Max: -1
 Version-Overrides:
-  '2.7.11':
+  2.7.11:
     Display-Name: Python 2.7
     License: The Python License, version 2.7
     Provides:
     - python-2.7
     - python
     - python(version) = 2.7
-  '3.5.0':
-    Display-Name: Python 3.5
-    License: The Python License, version 3.5
+  3.5.1:
+    Display-Name: Python 3.5.1
+    License: The Python License, version 3.5.1
     Provides:
-    - python-3.5
+    - python-3.5.1
     - python
-    - python(version) = 3.5
+    - python(version) = 3.5.1
+Source-Url: https://github.com/Grief/openshift-cartridge-python-3.5/archive/master.zip

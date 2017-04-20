@@ -42,7 +42,7 @@ function build_python() {
 		cpus=1
 	fi
 	
-	curl -C - -L -o $tdir/$ver.tgz https://www.python.org/ftp/python/$ver/Python-$ver.tgz
+	curl -L -o $tdir/$ver.tgz https://www.python.org/ftp/python/$ver/Python-$ver.tgz
 	mkdir -p $tdir/python-$ver
 	tar xvzf $tdir/$ver.tgz --strip-component=1 -C $tdir/python-$ver
 	
@@ -53,11 +53,11 @@ function build_python() {
 
 	cd $tdir/python-$ver
 	./configure --prefix=${pdir}usr/
-	make -j$cpus
-	make install -j$cpus
+	make -j$cpus > /dev/null
+	make install -j$cpus > /dev/null
 
-	$pdir/usr/bin/python -m ensurepip
-	$pdir/usr/bin/pip install virtualenv
+#	$pdir/usr/bin/python -m ensurepip  > /dev/null
+#	$pdir/usr/bin/pip install virtualenv
 
 	report_status $? "Installation"
 }
@@ -79,16 +79,16 @@ function create_virt() {
 
 if ! is_python_installed; then
 	build_python
-	create_virt
+#	create_virt
 else
 	client_result "Python $ver already installed."
 fi
 
-if ! is_virt_installed; then
-	create_virt
-else
-	client_result "Virtual environment already installed."
-fi
+#if ! is_virt_installed; then
+#	create_virt
+#else
+#	client_result "Virtual environment already installed."
+#fi
 
 # Clean up temp directory
 rm -rf $tdir/python-$ver
@@ -98,4 +98,3 @@ rm -f $tdir/$ver.tgz
 # Create directories, change ownership and SELinux security context
 mkdir -p $OPENSHIFT_HOMEDIR/{.cache,.pip}
 chown $OPENSHIFT_GEAR_UUID.$OPENSHIFT_GEAR_UUID -R $OPENSHIFT_HOMEDIR/.pip $OPENSHIFT_HOMEDIR/.cache
-
